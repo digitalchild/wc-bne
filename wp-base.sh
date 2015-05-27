@@ -9,7 +9,8 @@
 # Change these variables to suit your environment 
 MYSQLUSER=wordpress
 MYSQLPASS=wordpress
-WEBROOT='/Users/jamie/Sites'
+WEBROOT='/Users/jamie/Sites' 
+BASE_PLUGINS='jetpack wordfence wordpress-seo wordpress-importer contact-form-7 google-sitemap-generator'
 
 EXPECTED_ARGS=2
 E_BADARGS=65
@@ -100,8 +101,11 @@ wp core install --url=""$SITEURL"" --title="$SITENAME" --admin_user="$ADMINUSER"
 unset IFS
 echo 'Base Wordpress configuration completed....'
 
-wp plugin install jetpack wordfence wordpress-seo wordpress-importer contact-form-7 google-sitemap-generator --activate
+wp plugin install --activate $BASE_PLUGINS
 echo 'Common plugins install completed....'
+
+# Create base pages Home, contact, about, privacy policy, terms, 
+
 
 echo "---------------------------------------------"
 echo "New site created."
