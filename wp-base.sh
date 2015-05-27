@@ -7,10 +7,14 @@
 # This script was created to demonstrate how to use WordPress on the command line. 
 
 # Change these variables to suit your environment 
-MYSQLUSER=wordpress
-MYSQLPASS=wordpress
+MYSQLUSER='wordpress'
+MYSQLPASS='wordpress'
+WPADMINUSER='devadmin'
+WPADMINEMAIL='test@test.com'
 WEBROOT='/Users/jamie/Sites' 
 BASE_PLUGINS='jetpack wordfence wordpress-seo wordpress-importer contact-form-7 google-sitemap-generator'
+
+##### DO NOT EDIT BELOW THIS LINE UNLESS YOU KNOW WHAT YOU'RE DOING !!!! #####
 
 EXPECTED_ARGS=2
 E_BADARGS=65
@@ -72,7 +76,8 @@ INSTALLDIR=$1'-'$THEDATE
 SITEURL='http://localhost/'$INSTALLDIR
 SITENAME=$2
 SITEDIR=$WEBROOT/$INSTALLDIR
-ADMINUSER='devadmin'
+ADMINUSER=$WPADMINUSER
+ADMINEMAIL=$WPADMINEMAIL
 ADMINPASS=`genpasswd 8`
 
 echo '---------------------------------------------'
@@ -97,14 +102,14 @@ wp core download
 rm -rf wp-config-sample.php
 wp core config --dbname=$DBNAME --dbuser=$DBUSER --dbpass=$DBPASS --dbhost=localhost
 IFS='%'
-wp core install --url=""$SITEURL"" --title="$SITENAME" --admin_user="$ADMINUSER" --admin_password="$ADMINPASS" --admin_email="test@test.com"
+wp core install --url=""$SITEURL"" --title="$SITENAME" --admin_user="$ADMINUSER" --admin_password="$ADMINPASS" --admin_email="$ADMINEMAIL"
 unset IFS
 echo 'Base Wordpress configuration completed....'
 
 wp plugin install --activate $BASE_PLUGINS
 echo 'Common plugins install completed....'
 
-# Create base pages Home, contact, about, privacy policy, terms, 
+# Create base pages Home, contact, about, privacy policy, terms
 
 
 echo "---------------------------------------------"
