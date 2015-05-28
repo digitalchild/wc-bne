@@ -6,11 +6,12 @@
 
 # This script was created to demonstrate how to use WordPress on the command line. 
 
-BASE_DIR="$(dirname "$0")"
+SCRIPT_DIR=`pwd`
 
-source $BASE_DIR/wp-base.sh "$@"
+source $SCRIPT_DIR/wp-base.sh "$@"
 
 cd $SITEDIR; 
+
 # install woocommerce
 wp plugin install woocommerce --activate 
 # install the store front theme 
@@ -24,5 +25,34 @@ wp post create --post_type="page" --post_author=1 --post_status="publish" --post
 wp option delete "woocommerce_admin_notices"
 echo 'WooCommerce pages created..'; 
 
+# Create base pages contact, about, privacy policy, terms
+wp post create --post_type="page" --post_author=1 --post_status="publish" --post_title="About" --post_name="about" --post_content="About this awesome site goes here."
+
+# Add the contact page & form 
+FORMID=`wp post list --post_type="wpcf7_contact_form" --field="ID"`
+wp post create --post_type="page" --post_author=1 --post_status="publish" --post_title="Contact" --post_name="contact" --post_content="[contact-form-7 id="$FORMID" title="Contact form 1"]"
+
+# Add the terms and conditions page 
+TERMS=`cat $SCRIPT_DIR/terms.txt` 
+wp post create --post_type="page" --post_author=1 --post_status="publish" --post_title="Terms & Conditions" --post_name="terms-and-conditions" --post_content="$TERMS"
+
+# Add the privacy page 
+PRIVACYPOLICY=`cat $SCRIPT_DIR/privacy.txt` 
+wp post create --post_type="page" --post_author=1 --post_status="publish" --post_title="Privacy Policy" --post_name="privacy-policy" --post_content="$PRIVACYPOLICY"
+
+# Create the menu & activate it 
+wp menu create "Header Navigation" 
+wp menu location assign "header-navigation" primary 
+
+# Add the pages created above to the menu
+for i in $( wp post list --post_type="page" --field="ID" ); do
+  wp menu item add-post "header-navigation" $i
+done
+
+wp option update show_on_front "page"
+wp option update page_on_front 
+
 # re-write the permalinks - basic permalink
 wp rewrite structure /%postname%/ 
+
+open $SITEURL
