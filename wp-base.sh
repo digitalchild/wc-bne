@@ -107,10 +107,8 @@ unset IFS
 echo 'Base Wordpress configuration completed....'
 
 wp plugin install --activate $BASE_PLUGINS
+wp plugin delete hello
 echo 'Common plugins install completed....'
-
-# Create base pages Home, contact, about, privacy policy, terms
-
 
 echo "---------------------------------------------"
 echo "New site created."
@@ -118,4 +116,3 @@ echo "Link $SITEURL"
 echo "Username: $ADMINUSER"
 echo "Password: $ADMINPASS"
 echo "---------------------------------------------"
-open $SITEURL
