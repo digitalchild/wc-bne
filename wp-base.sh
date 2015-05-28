@@ -108,6 +108,7 @@ echo 'Base Wordpress configuration completed....'
 
 wp plugin install --activate $BASE_PLUGINS
 wp plugin delete hello
+wp post delete 2
 echo 'Common plugins install completed....'
 
 echo "---------------------------------------------"
