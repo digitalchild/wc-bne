@@ -3,7 +3,6 @@
 # This script will create a local woocommerce installation and install some commonly used plugins. 
 # Tested on MAMP. 
 # Author: Jamie Madden (https://digitalchild.info / https://github.com/digitalchild )
-
 # This script was created to demonstrate how to use WordPress on the command line. 
 
 SCRIPT_DIR=`pwd`
@@ -50,7 +49,6 @@ wp menu item add-custom "primary-navigation" "About" "$SITEURL/about/"
 wp menu item add-custom "primary-navigation" "Terms & Conditions" "$SITEURL/terms-and-conditions/"
 wp menu item add-custom "primary-navigation" "Privacy Policy" "$SITEURL/privacy-policy/"
 wp menu item add-custom "primary-navigation" "Contact" "$SITEURL/contact/"
-
 
 # Create secondary menu & assign it
 wp menu create "Secondary Navigation" 
