@@ -12,7 +12,7 @@ MYSQLPASS='wordpress'
 WPADMINUSER='devadmin'
 WPADMINEMAIL='test@test.com'
 WEBROOT='/Users/jamie/Sites' 
-BASE_PLUGINS='jetpack wordfence wordpress-seo wordpress-importer contact-form-7 google-sitemap-generator'
+BASE_PLUGINS='jetpack wordfence wordpress-seo wordpress-importer contact-form-7'
 
 ##### DO NOT EDIT BELOW THIS LINE UNLESS YOU KNOW WHAT YOU'RE DOING !!!! #####
 

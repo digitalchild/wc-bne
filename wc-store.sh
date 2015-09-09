@@ -63,4 +63,12 @@ wp import wp-content/plugins/woocommerce/dummy-data/dummy-data.xml --authors=cre
 wp rewrite structure /%postname%/ 
 wp rewrite flush --hard
 
+# Added the site details again just so you don't have to scroll up 
+echo "---------------------------------------------"
+echo "New site created."
+echo "Link $SITEURL"
+echo "Username: $ADMINUSER"
+echo "Password: $ADMINPASS"
+echo "---------------------------------------------"
+
 open $SITEURL
