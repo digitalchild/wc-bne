@@ -14,7 +14,7 @@ Open wp-base.sh and update the following variables to suit your needs.
 MYSQLUSER=mysqluser <br />
 MYSQLPASS=mysqlpass  <br />
 WEBROOT='/Path/To/Your/WebRoot'  <br />
-BASE_PLUGINS='jetpack wordfence wordpress-seo wordpress-importer contact-form-7 google-sitemap-generator' <br />
+BASE_PLUGINS='jetpack wordfence wordpress-seo wordpress-importer contact-form-7' <br />
 
 <code>
 Usage: 	./wp-base.sh sitedir sitename 
